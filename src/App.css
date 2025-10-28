@@ -1,0 +1,1005 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Touch improvements for mobile */
+button,
+.modal-button,
+.response-button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.app {
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  background: linear-gradient(
+    135deg,
+    #ff9a9e 0%,
+    #fecfef 25%,
+    #fecfef 75%,
+    #ff9a9e 100%
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Rosas flotantes */
+.roses-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-rose {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.7;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Estrellas decorativas */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  font-size: 1rem;
+  color: #ffd700;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Contenido principal */
+.main-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 3rem 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+/* Botón de información */
+.info-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 182, 193, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8b0000;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.info-icon-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8b0000;
+}
+
+.info-button:hover {
+  background: rgba(255, 182, 193, 1);
+  transform: rotate(360deg);
+}
+
+.info-button:hover .info-icon-text {
+  transform: rotate(-360deg);
+}
+
+/* Referencia al botón de información */
+.info-reference {
+  position: relative;
+  margin: 1.5rem auto 0 auto;
+  max-width: fit-content;
+  font-size: 0.85rem;
+  color: #8b0000;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 0.8rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 182, 193, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inline-info-icon {
+  color: #8b0000;
+  vertical-align: middle;
+}
+
+.inline-info-button {
+  color: #8b0000;
+  font-weight: 600;
+  font-style: italic;
+  background: rgba(255, 182, 193, 0.3);
+  padding: 0.1rem 0.3rem;
+  border-radius: 50%;
+  font-size: 0.9em;
+}
+
+/* Título principal */
+.title-container {
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #8b0000;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  line-height: 1.2;
+}
+
+.heart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mensajes */
+.message-container {
+  margin-bottom: 2.5rem;
+}
+
+.main-message {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.honest-message {
+  font-size: 1.1rem;
+  color: #8b0000;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  background: rgba(255, 182, 193, 0.1);
+  padding: 1rem;
+  border-radius: 15px;
+  border-left: 4px solid #ff6b9d;
+}
+
+.invitation-text {
+  font-size: 1.4rem;
+  color: #8b0000;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.final-note {
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.coffee-icon {
+  color: #d2691e;
+}
+
+/* Botones de respuesta */
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.response-button {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.response-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+.button-icon {
+  color: #ffd700;
+}
+
+/* Resultado de respuesta */
+.response-result {
+  margin-top: 2rem;
+}
+
+.result-card {
+  padding: 2rem;
+  border-radius: 20px;
+  border: 2px solid;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.result-card.yes {
+  border-color: #4caf50;
+  background: linear-gradient(
+    135deg,
+    rgba(76, 175, 80, 0.1),
+    rgba(76, 175, 80, 0.05)
+  );
+}
+
+.result-card.no {
+  border-color: #ff6b6b;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 107, 0.1),
+    rgba(255, 107, 107, 0.05)
+  );
+}
+
+.result-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-family: "Dancing Script", cursive;
+}
+
+.result-card p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.result-card small {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Modales */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 182, 193, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8b0000;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 182, 193, 1);
+  transform: rotate(90deg);
+}
+
+.modal-content h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  color: #8b0000;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.modal-content p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-button {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  min-width: 180px;
+}
+
+.modal-button.yes {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+}
+
+.modal-button.no {
+  background: linear-gradient(135deg, #ff6b6b, #ff5252);
+  color: white;
+}
+
+.modal-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal informativo */
+.info-modal {
+  max-width: 600px;
+  max-height: 90vh;
+}
+
+.info-modal .modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.info-content {
+  text-align: left;
+  padding-right: 0.5rem; /* Para el scrollbar */
+}
+
+.info-content p {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.info-content strong {
+  color: #8b0000;
+  font-weight: 600;
+}
+
+.tech-note {
+  background: rgba(255, 182, 193, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #ff6b9d;
+  font-size: 0.9rem;
+}
+
+/* Scrollbar específico para modales */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 182, 193, 0.1);
+  border-radius: 10px;
+  margin: 0.5rem 0;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 182, 193, 0.6);
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 182, 193, 0.8);
+}
+
+/* Panel de Administración */
+.admin-panel {
+  max-width: 500px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border: 2px solid #28a745;
+}
+
+.admin-panel h2 {
+  color: #28a745;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.admin-content h3 {
+  color: #495057;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.admin-response {
+  background: rgba(40, 167, 69, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #28a745;
+  margin-bottom: 1.5rem;
+}
+
+.admin-response.yes {
+  background: rgba(40, 167, 69, 0.15);
+  border-left-color: #28a745;
+}
+
+.admin-response.no {
+  background: rgba(220, 53, 69, 0.15);
+  border-left-color: #dc3545;
+}
+
+.admin-no-response {
+  background: rgba(255, 193, 7, 0.15);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #ffc107;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-button {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  background: #28a745;
+  color: white;
+}
+
+.admin-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.admin-button.danger {
+  background: #dc3545;
+}
+
+.admin-button.danger:hover {
+  background: #c82333;
+}
+
+.admin-info {
+  background: rgba(23, 162, 184, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #17a2b8;
+}
+
+.admin-info p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+/* Responsive Design - Mejorado */
+
+/* Pantallas muy grandes */
+@media (min-width: 1400px) {
+  .main-content {
+    max-width: 700px;
+    padding: 3.5rem 3rem;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+  }
+
+  .main-message {
+    font-size: 1.3rem;
+  }
+
+  .honest-message {
+    font-size: 1.2rem;
+  }
+
+  .invitation-text {
+    font-size: 1.6rem;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .main-content {
+    max-width: 650px;
+    padding: 3rem 2.5rem;
+  }
+
+  .main-title {
+    font-size: 3.2rem;
+  }
+}
+
+/* Tablets grandes y laptops pequeñas */
+@media (max-width: 1024px) {
+  .main-content {
+    max-width: 90%;
+    padding: 2.5rem 2rem;
+  }
+
+  .main-title {
+    font-size: 2.8rem;
+  }
+
+  .floating-rose {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .app {
+    padding: 15px;
+  }
+
+  .main-content {
+    margin: 10px;
+    padding: 2rem 1.5rem;
+    max-width: 95%;
+  }
+
+  .info-reference {
+    margin: 1rem auto 1.5rem auto;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .main-title {
+    font-size: 2.4rem;
+    flex-direction: column;
+    gap: 0.8rem;
+    line-height: 1.1;
+  }
+
+  .main-message {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .honest-message {
+    font-size: 1rem;
+    padding: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .invitation-text {
+    font-size: 1.3rem;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .final-note {
+    font-size: 0.95rem;
+  }
+
+  .floating-rose {
+    font-size: 1.6rem;
+  }
+
+  .modal-content {
+    margin: 15px;
+    padding: 1.8rem;
+    max-width: 90%;
+  }
+
+  .modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .modal-button {
+    min-width: auto;
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .response-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.2rem 2rem;
+  }
+
+  .info-modal {
+    max-width: 85%;
+  }
+
+  .info-content p {
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 480px) {
+  .app {
+    padding: 10px;
+  }
+
+  .main-content {
+    padding: 1.5rem 1.2rem;
+    margin: 5px;
+    border-radius: 25px;
+  }
+
+  .info-reference {
+    margin: 1rem auto 1.2rem auto;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .main-title {
+    font-size: 2rem;
+    gap: 0.5rem;
+  }
+
+  .heart-icon {
+    margin-top: 0.5rem;
+  }
+
+  .main-message {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .honest-message {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .invitation-text {
+    font-size: 1.2rem;
+    gap: 0.5rem;
+  }
+
+  .final-note {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .floating-rose {
+    font-size: 1.4rem;
+  }
+
+  .star {
+    font-size: 0.9rem;
+  }
+
+  .modal-content {
+    margin: 10px;
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-button {
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 15px;
+  }
+
+  .response-button {
+    max-width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .info-modal {
+    max-width: 95%;
+  }
+
+  .info-content {
+    font-size: 0.9rem;
+  }
+
+  .info-content p {
+    margin-bottom: 1rem;
+  }
+
+  .tech-note {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .message-container {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 360px) {
+  .main-content {
+    padding: 1.2rem 1rem;
+    margin: 5px;
+  }
+
+  .info-reference {
+    margin: 0.8rem auto 1rem auto;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+  }
+
+  .main-message {
+    font-size: 0.95rem;
+  }
+
+  .honest-message {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .invitation-text {
+    font-size: 1.1rem;
+  }
+
+  .final-note {
+    font-size: 0.85rem;
+  }
+
+  .floating-rose {
+    font-size: 1.2rem;
+  }
+
+  .modal-content {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .modal-content p {
+    font-size: 0.9rem;
+  }
+
+  .modal-button {
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .response-button {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .info-content {
+    font-size: 0.85rem;
+  }
+
+  .tech-note {
+    padding: 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+  .main-content {
+    padding: 1rem;
+    margin: 5px 10px;
+  }
+
+  .main-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .message-container {
+    margin-bottom: 1rem;
+  }
+
+  .main-message {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .honest-message {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .invitation-text {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .final-note {
+    font-size: 0.8rem;
+  }
+
+  .floating-rose {
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .modal-content p {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Efectos adicionales */
+.main-content::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff9a9e, #fecfef, #ff9a9e, #fecfef);
+  border-radius: 32px;
+  z-index: -1;
+  animation: borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
